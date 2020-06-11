@@ -1,0 +1,37 @@
+#https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html
+zuul:
+  ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
+  #Service will be mapped under the /api URI
+  prefix: /v1/api
+  routes:
+    STUDENT-SERVICE:
+      path: /student-service/**
+      serviceId: STUDENT-SERVICE
+    COURSE-SERVICE:
+      path: /course-service/**
+      serviceId: COURSE-SERVICE
+    PAYMENT-SERVICE:
+       path: /payment-service/**
+       serviceId: PAYMENT-SERVICE
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+server:
+  port: 8083
+
+spring:
+  application:
+    name: STUDENT-COURSE-GATWAY
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

@@ -1,0 +1,67 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">Course Registration</div>
+            <div class="panel-body">
+            <form>
+                <div class="form-group">
+                  <label for="name">Enter Name</label>
+                  <input type="name" class="form-control" id="name"  name="name" [(ngModel)]="student.name">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="age" class="form-control" id="age" name="age" [(ngModel)]="student.age">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Enter Email</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="student.email">
+                  </div>
+                  <!-- <div class="form-group">
+                    <label for="email">Mobile</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="student.email">
+                  </div> -->
+                  <div class="form-group">
+                    <label for="coursename">Course Name</label>
+                    <input type="coursename" class="form-control" id="coursename" name="coursename" [(ngModel)]="course.name">
+                  </div>
+                  <div class="form-group">
+                    <label for="desc">Course Description</label>
+                    <input type="desc" class="form-control" id="desc" name="description" [(ngModel)]="course.description">
+                  </div>
+                <button type="button" class="btn btn-primary" (click)="register()">Register</button>
+              </form>
+              </div>
+              </div>
+        </div>
+        <div class="col-md-6">
+          <!-- <button class="btn btn-success" (click)="getAllStudent()">Get Details</button> -->
+            <div class="panel panel-primary" *ngIf="recieved">
+                <div class="panel-heading">Registered Info</div>
+                <div class="panel-body">
+                  <h3 *ngIf="students.length==0">No Record Found</h3>
+                  <table class="table table-hover" *ngIf="students.length>0">
+                    <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let student of students">
+                        <td>{{student.id}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.age}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+        </div>
+    </div>
+ 
+</div>
