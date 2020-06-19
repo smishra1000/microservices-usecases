@@ -1,5 +1,6 @@
 #https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html
 zuul:
+  ignoredServices: '*'
   ignored-headers: Access-Control-Allow-Credentials, Access-Control-Allow-Origin
   #Service will be mapped under the /api URI
   prefix: /v1/api
@@ -14,12 +15,6 @@ zuul:
        path: /payment-service/**
        serviceId: PAYMENT-SERVICE
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    hostname: localhost
 
 server:
   port: 8083

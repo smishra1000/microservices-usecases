@@ -3,6 +3,12 @@ spring:
     name: STUDENT-COURSE-GATEWAY-SERVICE
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods:
+              - POST
       routes:
         - id: course-service
           uri : lb://COURSE-SERVICE
@@ -23,15 +29,6 @@ spring:
                 name: student-service
                 fallbackuri: forward:/studentFallBack
 
-
-eureka:
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    hostname: localhost
 server:
     port: 8084
 
